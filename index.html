@@ -9,7 +9,7 @@
 			
 	</head>
 	
-	<body>
+	<body onload="onLoad()">
 		
 		<div id= "content">
 		
@@ -41,10 +41,11 @@
 			
 			<br>
 			<div id= "manual">
-				<button id="upButton" onclick= ""> UP </button>
-				<button id="downButton" onclick= ""> DOWN </button>
+				<button id="upButton" onclick= "data('1')"> UP </button>
+				<button id="downButton" onclick= "data('0')"> DOWN </button>
 				
 			</div>
+			<input type="hidden" id="GemtInput">
 		</div>
 	</body>
 </html>

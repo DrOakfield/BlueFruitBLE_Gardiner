@@ -30,37 +30,12 @@ var blue ={
 }
 
 var ConnDeviceId;
-var deviceList =[];
  
 function onLoad(){
 	document.addEventListener('deviceready', onDeviceReady, false);
-    bleDeviceList.addEventListener('touchstart', conn, false); // assume not scrolling
+    
 }
 
-function onDeviceReady(){
-	refreshDeviceList();
-}
-
-	 
-function refreshDeviceList(){
-	//deviceList =[];
-	document.getElementById("bleDeviceList").innerHTML = ''; // empties the list
-	if (cordova.platformId === 'android') { // Android filtering is broken
-		ble.scan([], 5, onDiscoverDevice, onError);
-	} else {
-		//alert("Disconnected");
-		ble.scan([blue.serviceUUID], 5, onDiscoverDevice, onError);
-	}
-}
-
-
-function onDiscoverDevice(device){
-	//Make a list in html and show devises
-		var listItem = document.createElement('li'),
-		html = device.name+ "," + device.id;
-		listItem.innerHTML = html;
-		document.getElementById("bleDeviceList").appendChild(listItem);
-}
 
 
 function conn(){
@@ -85,8 +60,16 @@ function onConnError(){
 	document.getElementById("statusDiv").innerHTML = " Status: Disonnected";
 }
 
- function onData(data){ // data received from Arduino
+function onData(data){ // data received from Arduino
 	document.getElementById("receiveDiv").innerHTML =  "Received: " + bytesToString(data) + "<br/>";
+}
+
+function sendSave(){
+	var sunrise = stringToBytes(sunriseBox.value);
+	var sunset = stringToBytes(sunsetBox.value);
+	
+	ble.writeWithoutResponse(ConnDeviceId, blue.serviceUUID, blue.txCharacteristic, sunrise, onSend, onError);
+	ble.writeWithoutResponse(ConnDeviceId, blue.serviceUUID, blue.txCharacteristic, sunset, onSend, onError);
 }
 
 function data(txt){
