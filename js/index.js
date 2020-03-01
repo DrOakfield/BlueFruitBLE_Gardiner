@@ -73,8 +73,8 @@ function sendSave(){
 }
 
 function onSendSave() {
-	document.getElementById("sendDiv1").innerHTML = "Sent: " + sunriseBox.value.substring(0, 2) + ":" sunriseBox.value.substring(2, 5) + "<br/>";
-	document.getElementById("sendDiv2").innerHTML = "Sent: " + sunsetBox.value.substring(0, 2) + ":" sunsetBox.value.substring(2, 5) + "<br/>";
+	document.getElementById("sendDiv1").innerHTML = "Sent: " + sunriseBox.value.substring(0, 2) + ":" + sunriseBox.value.substring(2, 5) + "<br/>";
+	document.getElementById("sendDiv2").innerHTML = "Sent: " + sunsetBox.value.substring(0, 2) + ":" + sunsetBox.value.substring(2, 5) + "<br/>";
 }
 
 
