@@ -72,6 +72,12 @@ function sendSave(){
 	ble.writeWithoutResponse(ConnDeviceId, blue.serviceUUID, blue.txCharacteristic, sunset, onSend, onError);
 }
 
+function onSendSave() {
+	document.getElementById("sendDiv1").innerHTML = "Sent: " + sunriseBox.value.substring(0, 2) + ":" sunriseBox.value.substring(2, 5) + "<br/>";
+	document.getElementById("sendDiv2").innerHTML = "Sent: " + sunsetBox.value.substring(0, 2) + ":" sunsetBox.value.substring(2, 5) + "<br/>";
+}
+
+
 function data(txt){
 	GemtInput.value = txt;
 	sendData();
@@ -83,7 +89,7 @@ function sendData() { // send data to Arduino
 }
 	
 function onSend(){
-	document.getElementById("sendDiv").innerHTML = "Sent: " + GemtInput.value + "<br/>";
+	document.getElementById("manualDiv").innerHTML = "Sent: " + GemtInput.value + "<br/>";
 }
 
 
