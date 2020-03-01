@@ -1,0 +1,72 @@
+body {
+	background-color: #3b5998;
+}
+img {
+	width: 100%;
+}
+
+h1 {
+	
+}
+
+
+
+#content {
+	width: 80%;
+	margin: auto;
+	text-align: center;
+	
+}
+
+
+#buttonAuto {
+	width: 100%;
+}
+
+#inputText {
+	
+}
+
+
+
+#input {
+	
+	display: flex;
+}
+
+
+#sunrise {
+	width: 100%;
+}
+
+#sunriseBox {
+	width: 75%;
+}
+
+#sunset {
+	width: 100%;
+	
+
+}
+#sunsetBox {
+	width: 75%;
+}
+
+#save {
+	
+}
+
+
+#manual {
+	display: flex;
+}
+
+#upButton {
+	width: 50%;
+	height: 50%;
+}
+
+#downButton {
+	width: 50%;
+	height: 50%;
+}

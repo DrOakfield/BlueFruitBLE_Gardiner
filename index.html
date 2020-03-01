@@ -1,0 +1,50 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+			<title> Curtain Controller </title>
+			<link rel = "stylesheet" type = "text/css" href = "format.css">
+			<meta name = "viewport" content = "width= device-width, initial-scale=1">
+			<script type="text/javascript" src="cordova.js"></script>
+			<script type = "text/javascript" src = "js/index.js"></script>
+			
+	</head>
+	
+	<body>
+		
+		<div id= "content">
+		
+			<h1>Curtain Controller</h1>
+			<br>
+			
+			<button id = "buttonAuto" onclick = ""> Automatic </button>
+			<div id = "autoMessage"> </div>
+			
+			<br>
+			
+			<p id = "inputText">Set own time:</p> 
+			<div id = "input">
+				<div id = "sunrise">
+					<p>Sunrise:</p>
+					<input type = "number" id = "sunriseBox" />
+				</div>
+				<div id = "sunset">
+					<p>Sunset:</p>
+					<input type = "number" id = "sunsetBox" />
+				</div>
+			</div>
+			
+				<br><br>
+				
+				<div id = "save"> <button onclick = ""> Save </button> </div>
+				
+				<div id = "result"></div>
+			
+			<br>
+			<div id= "manual">
+				<button id="upButton" onclick= ""> UP </button>
+				<button id="downButton" onclick= ""> DOWN </button>
+				
+			</div>
+		</div>
+	</body>
+</html>
