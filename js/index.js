@@ -32,9 +32,10 @@ var blue ={
 var ConnDeviceId;
  
 function onLoad(){
-	document.addEventListener('deviceready', onDeviceReady, false);
-    
+	
 }
+
+
 
 
 
@@ -68,8 +69,12 @@ function sendSave(){
 	var sunrise = stringToBytes(sunriseBox.value);
 	var sunset = stringToBytes(sunsetBox.value);
 	
+	onSendSave();
+
 	ble.writeWithoutResponse(ConnDeviceId, blue.serviceUUID, blue.txCharacteristic, sunrise, onSend, onError);
 	ble.writeWithoutResponse(ConnDeviceId, blue.serviceUUID, blue.txCharacteristic, sunset, onSend, onError);
+
+	
 }
 
 function onSendSave() {
