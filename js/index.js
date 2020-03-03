@@ -16,6 +16,8 @@ function stringToBytes(string) {
     return array.buffer;
 }
 
+
+
 // this is ble hm-10 UART service
 /*var blue= {
     serviceUUID: "0000FFE0-0000-1000-8000-00805F9B34FB",
@@ -68,7 +70,7 @@ function onData(data){ // data received from Arduino
 function sendSave(){
 	var sunrise = stringToBytes(sunriseBox.value);
 	var sunset = stringToBytes(sunsetBox.value);
-	
+
 	onSendSave();
 
 	ble.writeWithoutResponse(ConnDeviceId, blue.serviceUUID, blue.txCharacteristic, sunrise, onSend, onError);
@@ -78,8 +80,8 @@ function sendSave(){
 }
 
 function onSendSave() {
-	document.getElementById("sendDiv1").innerHTML = "Sent: " + sunriseBox.value.substring(0, 2) + ":" + sunriseBox.value.substring(2, 5) + "<br/>";
-	document.getElementById("sendDiv2").innerHTML = "Sent: " + sunsetBox.value.substring(0, 2) + ":" + sunsetBox.value.substring(2, 5) + "<br/>";
+	document.getElementById("sendDiv1").innerHTML = "Sent: " + sunriseBox.value + "<br/>";
+	document.getElementById("sendDiv2").innerHTML = "Sent: " + sunsetBox.value + "<br/>";
 }
 
 
@@ -98,13 +100,7 @@ function onSend(){
 }
 
 
-function disconnect() {
-	ble.disconnect(ConnDeviceId, onDisconnect, onError);
-}
 
-function onDisconnect(){
-	document.getElementById("statusDiv").innerHTML = "Status: Disconnected";
-}
 function onError(reason)  {
 	alert("ERROR: " + reason); // real apps should use notification.alert
 }
