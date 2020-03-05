@@ -5,10 +5,11 @@ img {
 	width: 100%;
 }
 
-h1 {
-	
+button {
+	width: 50%;
+	height: 50%;
+	font-family: inherit;
 }
-
 
 
 #content {
@@ -21,13 +22,6 @@ h1 {
 }
 
 
-#buttonAuto {
-	width: 100%;
-}
-
-#inputText {
-	
-}
 
 
 
@@ -54,23 +48,19 @@ h1 {
 	width: 75%;
 }
 
-#save {
-	
-}
 
-
-#manual {
-	display: flex;
-}
-
-#upButton {
+#Button0 {
 	width: 50%;
 	height: 50%;
 	font-family: inherit;
 }
 
-#downButton {
+#Button25 {
 	width: 50%;
 	height: 50%;
 	font-family: inherit;
+}
+
+#Button50 {
+
 }
