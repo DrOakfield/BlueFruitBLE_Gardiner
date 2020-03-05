@@ -43,7 +43,7 @@ function onLoad(){
 
 function conn(){
 	var  deviceTouch= event.srcElement.innerHTML;
-	document.getElementById("debugDiv").innerHTML =""; // empty debugDiv
+	//document.getElementById("debugDiv").innerHTML =""; // empty debugDiv
 	var deviceTouchArr = deviceTouch.split(",");
 	ConnDeviceId = deviceTouchArr[1];
 	//document.getElementById("debugDiv").innerHTML += "<br>"+deviceTouchArr[0]+"<br>"+deviceTouchArr[1]; //for debug:
