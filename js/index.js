@@ -102,7 +102,7 @@ function currentTime(){
 	var M = d.getMinutes().toString;
 	var S = d.getSeconds().toString;
 	
-	var currentTime = H + "" + M + "" + S;
+	var currentTime = H + M + S;
 	return currentTime;
 }
 
