@@ -82,6 +82,7 @@ function onConnect(){
 	//document.getElementById("statusDiv").innerHTML = " Status: Connected";
 	//document.getElementById("bleId").innerHTML = ConnDeviceId;
 	ble.startNotification(ConnDeviceId, blue.serviceUUID, blue.rxCharacteristic, onData, onError);
+	
 }
 
 //failure
@@ -91,17 +92,29 @@ function onConnError(){
 }
 
 function onData(data){ // data received from Arduino
-	//document.getElementById("receiveDiv").innerHTML =  "Received: " + bytesToString(data) + "<br/>";
+	var currentTimeBytes = stringToBytes(currentTime());
+
+	ble.writeWithoutResponse(ConnDeviceId, blue.serviceUUID, blue.txCharacteristic, currentTimeBytes, onSend, onError);
+}
+
+function currentTime(){
+	var d = new Date();
+	
+	var H = d.getHours();
+	var M = d.getMinutes();
+	var S = d.getSeconds();
+	
+	var currentTime = H + M + S;
+	return currentTime;
 }
 
 function sendSave(){
+
 	var sunrise = stringToBytes(sunriseBox.value);
 	var sunset = stringToBytes(sunsetBox.value);
 
-	onSendSave();
-
-	ble.writeWithoutResponse(ConnDeviceId, blue.serviceUUID, blue.txCharacteristic, sunrise, onSend, onError);
-	ble.writeWithoutResponse(ConnDeviceId, blue.serviceUUID, blue.txCharacteristic, sunset, onSend, onError);
+	ble.writeWithoutResponse(ConnDeviceId, blue.serviceUUID, blue.txCharacteristic, sunrise, onSendSave, onError);
+	ble.writeWithoutResponse(ConnDeviceId, blue.serviceUUID, blue.txCharacteristic, sunset, onSendSave, onError);
 
 	
 }
