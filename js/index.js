@@ -107,8 +107,8 @@ function currentTime(){
 }
 
 function sendCurrentTime(){
-	
-	var currentTimeBytes = stringToBytes(currentTime());
+	var currentTimeTemp = currentTime(); 
+	var currentTimeBytes = stringToBytes(currentTimeTemp);
 
 	ble.writeWithoutResponse(ConnDeviceId, blue.serviceUUID, blue.txCharacteristic, currentTimeBytes, onSend, onError);
 }
