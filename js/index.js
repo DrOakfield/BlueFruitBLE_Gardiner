@@ -98,9 +98,9 @@ function onData(data){ // data received from Arduino
 function currentTime(){
 	var d = new Date();
 	
-	var H = d.getHours();
-	var M = d.getMinutes();
-	var S = d.getSeconds();
+	var H = d.getHours().toString;
+	var M = d.getMinutes().toString;
+	var S = d.getSeconds().toString;
 	
 	var currentTime = H + "" + M + "" + S;
 	return currentTime;
