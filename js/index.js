@@ -92,9 +92,7 @@ function onConnError(){
 }
 
 function onData(data){ // data received from Arduino
-	var currentTimeBytes = stringToBytes(currentTime());
-
-	ble.writeWithoutResponse(ConnDeviceId, blue.serviceUUID, blue.txCharacteristic, currentTimeBytes, onSend, onError);
+	//document.getElementById("receiveDiv").innerHTML =  "Received: " + bytesToString(data) + "<br/>";
 }
 
 function currentTime(){
@@ -106,6 +104,12 @@ function currentTime(){
 	
 	var currentTime = H + M + S;
 	return currentTime;
+}
+
+function sendCurrentTime(){
+	var currentTimeBytes = stringToBytes(currentTime());
+
+	ble.writeWithoutResponse(ConnDeviceId, blue.serviceUUID, blue.txCharacteristic, currentTimeBytes, onSend, onError);
 }
 
 function sendSave(){
