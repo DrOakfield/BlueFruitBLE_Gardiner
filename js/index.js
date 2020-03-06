@@ -102,11 +102,12 @@ function currentTime(){
 	var M = d.getMinutes();
 	var S = d.getSeconds();
 	
-	var currentTime = H + M + S;
+	var currentTime = H + "" + M + "" + S;
 	return currentTime;
 }
 
 function sendCurrentTime(){
+	
 	var currentTimeBytes = stringToBytes(currentTime());
 
 	ble.writeWithoutResponse(ConnDeviceId, blue.serviceUUID, blue.txCharacteristic, currentTimeBytes, onSend, onError);
