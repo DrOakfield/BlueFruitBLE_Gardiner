@@ -95,20 +95,10 @@ function onData(data){ // data received from Arduino
 	//document.getElementById("receiveDiv").innerHTML =  "Received: " + bytesToString(data) + "<br/>";
 }
 
-function currentTime(){
-	var d = new Date();
-	
-	var H = d.getHours().toString;
-	var M = d.getMinutes().toString;
-	var S = d.getSeconds().toString;
-	
-	var currentTime = H + M + S;
-	return currentTime;
-}
 
 function sendCurrentTime(){
-	var currentTimeTemp = currentTime(); 
-	var currentTimeBytes = stringToBytes(currentTimeTemp);
+	const secondsSinceEpoch = Math.round(Date.now() / 1000);
+	var currentTimeBytes = stringToBytes(secondsSinceEpoch);
 
 	ble.writeWithoutResponse(ConnDeviceId, blue.serviceUUID, blue.txCharacteristic, currentTimeBytes, onSend, onError);
 }
