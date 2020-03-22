@@ -7,6 +7,12 @@
 //    return String.fromCharCode.apply(null, new Uint8Array(buffer));
 //}
 
+String.prototype.removeCharAt = function (i) {
+    var tmp = this.split(''); // convert to an array
+    tmp.splice(i, 1); // remove 1 element from the array
+    return tmp.join(''); // reconstruct the string
+}
+
 // ASCII only
 function stringToBytes(string) {
     var array = new Uint8Array(string.length);
@@ -98,18 +104,22 @@ function onData(data){ // data received from Arduino
 
 function sendCurrentTime(){
 	const secondsSinceEpoch = Math.round(Date.now() / 1000);
-	var currentTimeBytes = stringToBytes(secondsSinceEpoch);
+	var secondsSinceEpochStr = secondsSinceEpoch.toString();
+	var currentTimeBytes = stringToBytes(secondsSinceEpochStr);
 
 	ble.writeWithoutResponse(ConnDeviceId, blue.serviceUUID, blue.txCharacteristic, currentTimeBytes, onSend, onError);
 }
 
 function sendSave(){
+	var sunrise = sunriseBox.value.toString().removeCharAt(2);
+	var sunset = sunsetBox.value.toString().removeCharAt(2);
 
-	var sunrise = stringToBytes(sunriseBox.value);
-	var sunset = stringToBytes(sunsetBox.value);
 
-	ble.writeWithoutResponse(ConnDeviceId, blue.serviceUUID, blue.txCharacteristic, sunrise, onSendSave, onError);
-	ble.writeWithoutResponse(ConnDeviceId, blue.serviceUUID, blue.txCharacteristic, sunset, onSendSave, onError);
+	var sunriseBytes = stringToBytes(sunriseBox.value);
+	var sunsetBytes = stringToBytes(sunsetBox.value);
+
+	ble.writeWithoutResponse(ConnDeviceId, blue.serviceUUID, blue.txCharacteristic, sunriseBytes, onSendSave, onError);
+	ble.writeWithoutResponse(ConnDeviceId, blue.serviceUUID, blue.txCharacteristic, sunsetBytes, onSendSave, onError);
 
 	
 }
