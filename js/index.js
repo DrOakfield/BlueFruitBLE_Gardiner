@@ -115,8 +115,8 @@ function sendSave(){
 	var sunset = sunsetBox.value.toString().removeCharAt(2);
 
 
-	var sunriseBytes = stringToBytes(sunriseBox.value);
-	var sunsetBytes = stringToBytes(sunsetBox.value);
+	var sunriseBytes = stringToBytes(sunrise);
+	var sunsetBytes = stringToBytes(sunset);
 
 	ble.writeWithoutResponse(ConnDeviceId, blue.serviceUUID, blue.txCharacteristic, sunriseBytes, onSendSave, onError);
 	ble.writeWithoutResponse(ConnDeviceId, blue.serviceUUID, blue.txCharacteristic, sunsetBytes, onSendSave, onError);
